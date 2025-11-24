@@ -1,0 +1,112 @@
+[
+  {
+    "id": "alb_divide",
+    "title": "÷ (Divide)",
+    "slug": "divide",
+    "artistId": "1",
+    "artistSlug": "ed-sheeran",
+    "year": 2017,
+    "albumArt": "/images/art.jpg",
+    "trackIds": ["s1", "s2"]
+  },
+  {
+    "id": "alb_after_hours",
+    "title": "After Hours",
+    "slug": "after-hours",
+    "artistId": "2",
+    "artistSlug": "the-weeknd",
+    "year": 2020,
+    "albumArt": "/images/art.jpg",
+    "trackIds": ["s3"]
+  },
+  {
+    "id": "alb_future_nostalgia",
+    "title": "Future Nostalgia",
+    "slug": "future-nostalgia",
+    "artistId": "3",
+    "artistSlug": "dua-lipa",
+    "year": 2020,
+    "albumArt": "/images/art.jpg",
+    "trackIds": ["s4"]
+  },
+  {
+    "id": "alb_21",
+    "title": "21",
+    "slug": "21",
+    "artistId": "4",
+    "artistSlug": "adele",
+    "year": 2011,
+    "albumArt": "/images/art.jpg",
+    "trackIds": ["s5"]
+  },
+  {
+    "id": "alb_fine_line",
+    "title": "Fine Line",
+    "slug": "fine-line",
+    "artistId": "5",
+    "artistSlug": "harry-styles",
+    "year": 2019,
+    "albumArt": "/images/art.jpg",
+    "trackIds": ["s6"]
+  },
+  {
+    "id": "alb_stay_single",
+    "title": "Stay (Single)",
+    "slug": "stay-single",
+    "artistId": "6",
+    "artistSlug": "the-kid-laroi-justin-bieber",
+    "year": 2021,
+    "albumArt": "/images/art.jpg",
+    "trackIds": ["s7"]
+  },
+  {
+    "id": "alb_harrys_house",
+    "title": "Harry's House",
+    "slug": "harrys-house",
+    "artistId": "5",
+    "artistSlug": "harry-styles",
+    "year": 2022,
+    "albumArt": "/images/art.jpg",
+    "trackIds": ["s8"]
+  },
+  {
+    "id": "alb_wwafawdwg",
+    "title": "When We All Fall Asleep, Where Do We Go?",
+    "slug": "when-we-all-fall-asleep",
+    "artistId": "7",
+    "artistSlug": "billie-eilish",
+    "year": 2019,
+    "albumArt": "/images/art.jpg",
+    "trackIds": ["s9"]
+  },
+  {
+    "id": "alb_justice",
+    "title": "Justice",
+    "slug": "justice",
+    "artistId": "8",
+    "artistSlug": "justin-bieber",
+    "year": 2021,
+    "albumArt": "/images/art.jpg",
+    "trackIds": ["s10"]
+  },
+  {
+    "id": "alb_endless_summer_vacation",
+    "title": "Endless Summer Vacation",
+    "slug": "endless-summer-vacation",
+    "artistId": "9",
+    "artistSlug": "miley-cyrus",
+    "year": 2023,
+    "albumArt": "/images/art.jpg",
+    "trackIds": ["s11"]
+  },
+  {
+    "id": "alb_uptown_special",
+    "title": "Uptown Special",
+    "slug": "uptown-special",
+    "artistId": "10",
+    "artistSlug": "mark-ronson-bruno-mars",
+    "year": 2014,
+    "albumArt": "/images/art.jpg",
+    "trackIds": ["s12"]
+  }
+]

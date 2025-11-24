@@ -1,0 +1,94 @@
+[
+  {
+    "id": "1",
+    "name": "Ed Sheeran",
+    "slug": "ed-sheeran",
+    "bio": "English singer-songwriter and multi-instrumentalist known for his melodic pop songs.",
+    "songs": [
+      { "id": "s1", "title": "Perfect", "slug": "perfect" },
+      { "id": "s2", "title": "Shape of You", "slug": "shape-of-you" }
+    ]
+  },
+  {
+    "id": "2",
+    "name": "The Weeknd",
+    "slug": "the-weeknd",
+    "bio": "Canadian singer, songwriter and record producer with a distinctive voice and dark pop sound.",
+    "songs": [
+      { "id": "s3", "title": "Blinding Lights", "slug": "blinding-lights" }
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Dua Lipa",
+    "slug": "dua-lipa",
+    "bio": "British-Albanian pop singer known for her disco-inspired hits and confident style.",
+    "songs": [
+      { "id": "s4", "title": "Levitating", "slug": "levitating" }
+    ]
+  },
+  {
+    "id": "4",
+    "name": "Adele",
+    "slug": "adele",
+    "bio": "British singer-songwriter noted for her soulful voice and emotionally powerful ballads.",
+    "songs": [
+      { "id": "s5", "title": "Someone Like You", "slug": "someone-like-you" }
+    ]
+  },
+  {
+    "id": "5",
+    "name": "Harry Styles",
+    "slug": "harry-styles",
+    "bio": "English singer, songwriter and actor known for his modern rock and pop sound.",
+    "songs": [
+      { "id": "s6", "title": "Watermelon Sugar", "slug": "watermelon-sugar" },
+      { "id": "s8", "title": "As It Was", "slug": "as-it-was" }
+    ]
+  },
+  {
+    "id": "6",
+    "name": "The Kid LAROI & Justin Bieber",
+    "slug": "the-kid-laroi-justin-bieber",
+    "bio": "Australian rapper-singer The Kid LAROI teams up with global pop icon Justin Bieber for chart-topping collaborations.",
+    "songs": [
+      { "id": "s7", "title": "Stay", "slug": "stay" }
+    ]
+  },
+  {
+    "id": "7",
+    "name": "Billie Eilish",
+    "slug": "billie-eilish",
+    "bio": "American singer-songwriter known for her haunting vocals and minimalist production style.",
+    "songs": [
+      { "id": "s9", "title": "Bad Guy", "slug": "bad-guy" }
+    ]
+  },
+  {
+    "id": "8",
+    "name": "Justin Bieber",
+    "slug": "justin-bieber",
+    "bio": "Canadian pop singer recognized for his versatile sound and massive global success.",
+    "songs": [
+      { "id": "s10", "title": "Peaches", "slug": "peaches" }
+    ]
+  },
+  {
+    "id": "9",
+    "name": "Miley Cyrus",
+    "slug": "miley-cyrus",
+    "bio": "American singer, songwriter, and actress known for her distinctive raspy voice and genre-blending music.",
+    "songs": [
+      { "id": "s11", "title": "Flowers", "slug": "flowers" }
+    ]
+  },
+  {
+    "id": "10",
+    "name": "Mark Ronson ft. Bruno Mars",
+    "slug": "mark-ronson-bruno-mars",
+    "bio": "British producer Mark Ronson and American singer Bruno Mars collaborated for timeless funk-pop hits.",
+    "songs": [
+      { "id": "s12", "title": "Uptown Funk", "slug": "uptown-funk" }
+    ]
+  }
+]

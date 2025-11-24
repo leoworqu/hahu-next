@@ -1,0 +1,48 @@
+/* app/songs/[songSlug]/Song.module.css */
+
+.container {
+  width: 90%;
+  max-width: 700px;
+  margin: 40px auto;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.artist {
+  color: #444;
+  margin-bottom: 12px;
+}
+
+.artistLink {
+  color: #1e40af;
+  text-decoration: none;
+}
+
+.artistLink:hover {
+  text-decoration: underline;
+}
+
+.meta {
+  color: #666;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.lyrics {
+  white-space: pre-wrap;
+  line-height: 1.6;
+  background: #fafafa;
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid #eee;
+  text-align: center;
+}
+
+.notFound {
+  padding: 40px;
+  text-align: center;
+}

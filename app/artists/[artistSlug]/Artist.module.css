@@ -1,0 +1,41 @@
+/* app/artists/[artistSlug]/Artist.module.css */
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+.name {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.bio {
+  color: #444;
+  margin-bottom: 18px;
+}
+
+.sub {
+  margin-top: 18px;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.songList {
+  list-style: none;
+  padding: 0;
+}
+
+.songLink {
+  color: #1e40af;
+  text-decoration: none;
+}
+
+.songLink:hover {
+  text-decoration: underline;
+}
+
+.notFound {
+  padding: 40px;
+  text-align: center;
+}

@@ -1,0 +1,188 @@
+/* app/Home.module.css */
+
+.container {
+  max-width: 1240px;
+  margin: auto;
+  padding: 3rem;
+  padding-bottom: 60px;
+  background-color: white;
+}
+
+
+
+
+
+
+
+/* ------ Hero Styles ----- */
+
+
+.hero{
+  height: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3rem;
+}
+
+.title {
+  font-size: 4rem;
+  max-width: 350px;
+  font-weight: bolder;
+  text-align: left;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.subtitle {
+  text-align: left;
+  color: #555;
+  margin-bottom: 30px;
+  max-width: 350px;
+}
+
+.heroHeaders{
+  width: 50%;
+}
+
+.heroSearch{
+  width: 50%;
+}
+
+.heroSearchContainer{
+  display: flex;
+  align-items: center;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid #eee;
+}
+
+.heroSearchInput{
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  flex: 1;
+}
+
+.heroSearchButton{
+  background-color: #1C0B19;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.heroSearchButton:hover{
+  background-color: #0056b3;
+}
+
+
+
+
+
+
+
+
+
+
+/* ------ Artist and Songs Styles ----- */
+
+
+.artistsSection {
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 3rem;
+  color: #1C0B19;
+}
+
+.sectionTitle {
+  font-size: 2.7rem;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  text-align: center;
+}
+
+.artistList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.artistItem {
+  width: 33.3%;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.artistItem:hover {
+  background-color: #f3f4f6;
+}
+
+.link {
+  text-decoration: none;
+  color: #1e40af;
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+
+
+.songCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  padding: 0.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.albumArt {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.songInfo {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.songTitle {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #222;
+}
+
+.artistName {
+  font-size: 0.85rem;
+}
+
+
+
+
+
+
+.albumGrid {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.albumCard { display: block; width: 33.3%; padding: 0.5rem; padding-left: 2rem; padding-right: 2rem;}
+.albumCover { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 10px; }
+.albumMeta h3 { font-size: 0.95rem; margin: 8px 0 2px; }
+.albumMeta p { color: #777; font-size: 0.8rem; }
+.trackList { margin-top: 16px; }

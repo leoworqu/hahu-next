@@ -1,0 +1,46 @@
+/* app/artists/Artists.module.css */
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  color: #222;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+}
+
+.group {
+  background: #fff;
+  border: 1px solid #eee;
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.letter {
+  margin: 0 0 8px 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.link {
+  color: #1e40af;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}

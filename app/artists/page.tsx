@@ -1,0 +1,57 @@
+// app/artists/page.tsx
+import Link from 'next/link'
+import styles from './Artists.module.css'
+import { prisma } from '@/lib/prisma'
+
+// Generic helper: group by first letter of name
+function groupByLetter<T extends { name: string }>(artists: T[]) {
+  return artists.reduce<Record<string, T[]>>((acc, artist) => {
+    const letter = artist.name.charAt(0).toUpperCase()
+    acc[letter] = acc[letter] || []
+    acc[letter].push(artist)
+    return acc
+  }, {})
+}
+
+export default async function ArtistsPage() {
+  // Fetch artists from the database, sorted alphabetically
+  const artists = await prisma.artist.findMany({
+    orderBy: { name: 'asc' },
+  })
+
+  const grouped = groupByLetter(artists)
+  const alphabet = Array.from({ length: 26 }, (_, i) =>
+    String.fromCharCode(65 + i)
+  )
+
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.title}>Artists</h1>
+
+      <div className={styles.grid}>
+        {alphabet.map(letter => {
+          const artistsForLetter = grouped[letter] || []
+          if (!artistsForLetter.length) return null // skip empty letters
+
+          return (
+            <section key={letter} className={styles.group}>
+              <h2 className={styles.letter}>{letter}</h2>
+              <ul className={styles.list}>
+                {artistsForLetter.map(artist => (
+                  <li key={artist.id}>
+                    <Link
+                      href={`/artists/${artist.slug}`}
+                      className={styles.link}
+                    >
+                      {artist.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
