@@ -8,14 +8,43 @@ export const metadata = {
   description: 'Browse artists and songs to find your favorite lyrics easily.',
 }
 
-// Infer types from Prisma
-type FeaturedSong = Awaited<ReturnType<typeof prisma.songs.findMany>>[number]
-type FeaturedAlbum = Awaited<ReturnType<typeof prisma.albums.findMany>>[number]
-type Artist = Awaited<ReturnType<typeof prisma.artist.findMany>>[number]
+// Types that match what we actually query
+type FeaturedSong = {
+  id: string
+  slug: string
+  title: string
+  coverArt: string | null
+  artist: {
+    name: string
+    slug: string
+  }
+  album: {
+    albumArt: string | null
+    title: string
+    slug: string
+  } | null
+}
+
+type FeaturedAlbum = {
+  id: string
+  slug: string
+  title: string
+  year: number
+  albumArt: string | null
+  artist: {
+    name: string
+    slug: string
+  }
+}
+
+type Artist = {
+  id: string
+  slug: string
+  name: string
+}
 
 export default async function HomePage() {
-  // Fetch data with explicit types
-  const featuredSongs: FeaturedSong[] = await prisma.songs.findMany({
+  const featuredSongs = await prisma.songs.findMany({
     include: {
       artist: { select: { name: true, slug: true } },
       album: { select: { albumArt: true, title: true, slug: true } },
@@ -24,7 +53,9 @@ export default async function HomePage() {
     take: 9,
   })
 
-  const featuredAlbums: FeaturedAlbum[] = await prisma.albums.findMany({
+  const typedFeaturedSongs = featuredSongs as FeaturedSong[]
+
+  const featuredAlbums = await prisma.albums.findMany({
     include: {
       artist: { select: { name: true, slug: true } },
     },
@@ -32,9 +63,12 @@ export default async function HomePage() {
     take: 9,
   })
 
-  const artists: Artist[] = await prisma.artist.findMany({
+  const typedFeaturedAlbums = featuredAlbums as FeaturedAlbum[]
+
+  const artists = (await prisma.artist.findMany({
     orderBy: { name: 'asc' },
-  })
+    select: { id: true, slug: true, name: true },
+  })) as Artist[]
 
   return (
     <main className={styles.container}>
@@ -63,15 +97,15 @@ export default async function HomePage() {
         </div>
       </div>
 
-      {/* Featured Songs */}
+      {/* 🎵 Featured Songs */}
       <section className={styles.artistsSection}>
         <h2 className={styles.sectionTitle}>Featured Songs</h2>
         <ul className={styles.artistList}>
-          {featuredSongs.map((song: FeaturedSong) => {
+          {typedFeaturedSongs.map((song) => {
             const artUrl =
               song.album?.albumArt ??
               song.coverArt ??
-              '/default-cover.png' // make sure this exists in /public
+              '/default-cover.png' // ensure this exists in /public
 
             return (
               <li key={song.id} className={styles.artistItem}>
@@ -94,11 +128,11 @@ export default async function HomePage() {
         </ul>
       </section>
 
-      {/* Featured Albums */}
+      {/* 💿 Featured Albums */}
       <section className={styles.artistsSection}>
         <h2 className={styles.sectionTitle}>Featured Albums</h2>
         <ul className={styles.albumGrid}>
-          {featuredAlbums.map((album: FeaturedAlbum) => {
+          {typedFeaturedAlbums.map((album) => {
             const artUrl = album.albumArt ?? '/default-cover.png'
 
             return (
