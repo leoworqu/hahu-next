@@ -8,31 +8,37 @@ export const metadata = {
   description: 'Browse artists and songs to find your favorite lyrics easily.',
 }
 
+// Infer types from Prisma
+type FeaturedSong = Awaited<ReturnType<typeof prisma.songs.findMany>>[number]
+type FeaturedAlbum = Awaited<ReturnType<typeof prisma.albums.findMany>>[number]
+type Artist = Awaited<ReturnType<typeof prisma.artist.findMany>>[number]
+
 export default async function HomePage() {
-  const [featuredSongs, featuredAlbums, artists] = await Promise.all([
-    prisma.songs.findMany({
-      include: {
-        artist: { select: { name: true, slug: true } },
-        album: { select: { albumArt: true, title: true, slug: true } },
-      },
-      orderBy: { createdAt: 'desc' }, // newest songs first
-      take: 9,
-    }),
-    prisma.albums.findMany({
-      include: {
-        artist: { select: { name: true, slug: true } },
-      },
-      orderBy: { createdAt: 'desc' }, // newest albums first
-      take: 9,
-    }),
-    prisma.artist.findMany({
-      orderBy: { name: 'asc' },
-    }),
-  ])
+  // Fetch data with explicit types
+  const featuredSongs: FeaturedSong[] = await prisma.songs.findMany({
+    include: {
+      artist: { select: { name: true, slug: true } },
+      album: { select: { albumArt: true, title: true, slug: true } },
+    },
+    orderBy: { createdAt: 'desc' }, // newest first
+    take: 9,
+  })
+
+  const featuredAlbums: FeaturedAlbum[] = await prisma.albums.findMany({
+    include: {
+      artist: { select: { name: true, slug: true } },
+    },
+    orderBy: { createdAt: 'desc' },
+    take: 9,
+  })
+
+  const artists: Artist[] = await prisma.artist.findMany({
+    orderBy: { name: 'asc' },
+  })
 
   return (
     <main className={styles.container}>
-      {/* ✅ HERO SECTION (unchanged) */}
+      {/* HERO – unchanged */}
       <div className={styles.hero}>
         <div className={styles.heroHeaders}>
           <h1 className={styles.title}>Universe of Lyrics.</h1>
@@ -57,15 +63,15 @@ export default async function HomePage() {
         </div>
       </div>
 
-      {/* 🎵 Featured Songs – newest added */}
+      {/* Featured Songs */}
       <section className={styles.artistsSection}>
         <h2 className={styles.sectionTitle}>Featured Songs</h2>
         <ul className={styles.artistList}>
-          {featuredSongs.map(song => {
+          {featuredSongs.map((song: FeaturedSong) => {
             const artUrl =
               song.album?.albumArt ??
               song.coverArt ??
-              '/default-cover.png'
+              '/default-cover.png' // make sure this exists in /public
 
             return (
               <li key={song.id} className={styles.artistItem}>
@@ -88,11 +94,11 @@ export default async function HomePage() {
         </ul>
       </section>
 
-      {/* 💿 Featured Albums – newest added */}
+      {/* Featured Albums */}
       <section className={styles.artistsSection}>
         <h2 className={styles.sectionTitle}>Featured Albums</h2>
         <ul className={styles.albumGrid}>
-          {featuredAlbums.map(album => {
+          {featuredAlbums.map((album: FeaturedAlbum) => {
             const artUrl = album.albumArt ?? '/default-cover.png'
 
             return (
@@ -116,22 +122,6 @@ export default async function HomePage() {
         </ul>
       </section>
 
-      {/* 👥 All Artists (A–Z) */}
-      <section className={styles.artistsSection}>
-        <h2 className={styles.sectionTitle}>Browse Artists</h2>
-        <ul className={styles.artistList}>
-          {artists.map(artist => (
-            <li key={artist.id} className={styles.artistItem}>
-              <Link
-                href={`/artists/${artist.slug}`}
-                className={styles.link}
-              >
-                {artist.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
     </main>
   )
 }

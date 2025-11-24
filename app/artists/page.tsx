@@ -6,6 +6,7 @@ import { prisma } from '@/lib/prisma'
 // Infer the Artist type from Prisma
 type Artist = Awaited<ReturnType<typeof prisma.artist.findMany>>[number]
 
+
 // Group artists by first letter of their name
 function groupByLetter(artists: Artist[]) {
   return artists.reduce<Record<string, Artist[]>>((acc, artist) => {
