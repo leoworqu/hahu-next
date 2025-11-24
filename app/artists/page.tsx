@@ -3,9 +3,12 @@ import Link from 'next/link'
 import styles from './Artists.module.css'
 import { prisma } from '@/lib/prisma'
 
-// Generic helper: group by first letter of name
-function groupByLetter<T extends { name: string }>(artists: T[]) {
-  return artists.reduce<Record<string, T[]>>((acc, artist) => {
+// Infer the Artist type from Prisma
+type Artist = Awaited<ReturnType<typeof prisma.artist.findMany>>[number]
+
+// Group artists by first letter of their name
+function groupByLetter(artists: Artist[]) {
+  return artists.reduce<Record<string, Artist[]>>((acc, artist) => {
     const letter = artist.name.charAt(0).toUpperCase()
     acc[letter] = acc[letter] || []
     acc[letter].push(artist)
@@ -15,7 +18,7 @@ function groupByLetter<T extends { name: string }>(artists: T[]) {
 
 export default async function ArtistsPage() {
   // Fetch artists from the database, sorted alphabetically
-  const artists = await prisma.artist.findMany({
+  const artists: Artist[] = await prisma.artist.findMany({
     orderBy: { name: 'asc' },
   })
 
@@ -29,7 +32,7 @@ export default async function ArtistsPage() {
       <h1 className={styles.title}>Artists</h1>
 
       <div className={styles.grid}>
-        {alphabet.map(letter => {
+        {alphabet.map((letter: string) => {
           const artistsForLetter = grouped[letter] || []
           if (!artistsForLetter.length) return null // skip empty letters
 
@@ -37,7 +40,7 @@ export default async function ArtistsPage() {
             <section key={letter} className={styles.group}>
               <h2 className={styles.letter}>{letter}</h2>
               <ul className={styles.list}>
-                {artistsForLetter.map(artist => (
+                {artistsForLetter.map((artist: Artist) => (
                   <li key={artist.id}>
                     <Link
                       href={`/artists/${artist.slug}`}
