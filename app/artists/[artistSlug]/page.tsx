@@ -4,9 +4,11 @@ import { notFound } from 'next/navigation'
 import { prisma } from '@/lib/prisma'
 import styles from './Artist.module.css'
 
+type ArtistSlug = { slug: string }
+
 // Pre-generate all artist slugs
 export async function generateStaticParams() {
-  const artists = await prisma.artist.findMany({
+  const artists: ArtistSlug[] = await prisma.artist.findMany({
     select: { slug: true },
   })
 
@@ -43,14 +45,13 @@ export default async function ArtistPage({
     where: { slug: params.artistSlug },
     include: {
       albums: {
-        orderBy: { year: 'asc' }, // change to 'desc' if you want newest first
+        orderBy: { year: 'asc' },
         include: {
           songs: {
-            orderBy: { title: 'asc' }, // or trackNumber if you have it
+            orderBy: { title: 'asc' },
           },
         },
       },
-      // Singles = songs without an album
       songs: {
         where: { albumId: null },
         orderBy: { title: 'asc' },
@@ -58,9 +59,10 @@ export default async function ArtistPage({
     },
   })
 
-  if (!artist) {
-    notFound()
-  }
+  if (!artist) notFound()
+
+  type Album = (typeof artist.albums)[number]
+  type Song = (typeof artist.songs)[number]
 
   const hasAlbums = artist.albums.length > 0
   const hasSingles = artist.songs.length > 0
@@ -75,12 +77,10 @@ export default async function ArtistPage({
         <>
           <h2 className={styles.sub}>Albums</h2>
           <div className={styles.albumList}>
-            {artist.albums.map(album => (
+            {artist.albums.map((album: Album) => (
               <section key={album.id} className={styles.album}>
                 <div className={styles.albumHeader}>
-                  <h3 className={styles.albumTitle}>
-                    {album.title}
-                  </h3>
+                  <h3 className={styles.albumTitle}>{album.title}</h3>
                   {album.year && (
                     <span className={styles.albumYear}>{album.year}</span>
                   )}
@@ -88,7 +88,7 @@ export default async function ArtistPage({
 
                 {album.songs.length ? (
                   <ul className={styles.songList}>
-                    {album.songs.map(song => (
+                    {album.songs.map((song: { id: string; title: string; slug: string }) => (
                       <li key={song.id}>
                         <Link
                           href={`/songs/${song.slug}`}
@@ -113,7 +113,7 @@ export default async function ArtistPage({
         <>
           <h2 className={styles.sub}>Singles</h2>
           <ul className={styles.songList}>
-            {artist.songs.map(song => (
+            {artist.songs.map((song: Song) => (
               <li key={song.id}>
                 <Link
                   href={`/songs/${song.slug}`}

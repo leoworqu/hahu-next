@@ -5,9 +5,11 @@ import { notFound } from 'next/navigation'
 import { prisma } from '@/lib/prisma'
 import styles from './Song.module.css'
 
+type SongSlug = { slug: string }
+
 // Pre-generate all song routes
 export async function generateStaticParams() {
-  const songs = await prisma.songs.findMany({
+  const songs: SongSlug[] = await prisma.songs.findMany({
     select: { slug: true },
   })
 
@@ -62,7 +64,7 @@ export default async function SongPage({
   const artUrl =
     song.album?.albumArt ??
     song.coverArt ??
-    '/placeholder-image.png'
+    '/placeholder-image.png' // make sure this exists in /public
 
   // Handle lyrics using \n markers (or real line breaks as fallback)
   const lines = song.lyrics.includes('\\n')
@@ -111,7 +113,7 @@ export default async function SongPage({
         <h2 className={styles.lyricsHeading}>Lyrics</h2>
 
         <div className={styles.lyrics}>
-          {lines.map((line, idx) => (
+          {lines.map((line: string, idx: number) => (
             <p key={idx}>{line || '\u00A0'}</p>
           ))}
         </div>
