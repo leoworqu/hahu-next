@@ -7,10 +7,11 @@ import { prisma } from '@/lib/prisma'
 type Props = {
   params: { slug: string }
 }
+type AlbumSlug = { slug: string }
 
 // Pre-generate album pages from DB
 export async function generateStaticParams() {
-  const albums = await prisma.albums.findMany({
+  const albums: AlbumSlug[] = await prisma.albums.findMany({
     select: { slug: true },
   })
 
