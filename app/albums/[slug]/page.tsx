@@ -7,6 +7,7 @@ import { prisma } from '@/lib/prisma'
 type Props = {
   params: { slug: string }
 }
+
 type AlbumSlug = { slug: string }
 
 // Pre-generate album pages from DB
@@ -39,6 +40,8 @@ export default async function AlbumPage({ params }: Props) {
   if (!album) return notFound()
 
   const tracks = album.songs
+  type Track = (typeof tracks)[number] // element type of album.songs
+
   const trackCount = tracks.length
 
   return (
@@ -61,7 +64,7 @@ export default async function AlbumPage({ params }: Props) {
           }}
         >
           <Image
-            src={album.albumArt ?? 'https://placehold.co/600x600'}
+            src={album.albumArt ?? '/default-cover.png'}
             alt={`${album.title} cover`}
             fill
             sizes="160px"
@@ -100,7 +103,7 @@ export default async function AlbumPage({ params }: Props) {
               gap: 8,
             }}
           >
-            {tracks.map((track, idx) => (
+            {tracks.map((track: Track, idx: number) => (
               <li
                 key={track.id}
                 style={{
