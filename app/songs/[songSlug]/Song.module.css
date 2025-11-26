@@ -1,45 +1,70 @@
-/* app/songs/[songSlug]/Song.module.css */
+.pageContainer {
+  color: #333745;
+  width: 100%;
+  max-width: 1080px;
+  margin: 6rem auto;
+  font-family: "Menbere", sans-serif;
+  display: flex;
+  gap: 3rem;
+}
 
-.container {
-  width: 90%;
-  max-width: 700px;
-  margin: 40px auto;
+.leftContainer {
+  width: 70%;
+}
+
+.rightContainer {
+  background-color: #608e7f;
+  width: 40%;
+}
+
+.header {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
 }
 
 .title {
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 900;
   margin-bottom: 6px;
 }
 
-.artist {
-  color: #444;
-  margin-bottom: 12px;
+.cover {
+  border-radius: 1rem;
 }
 
+.artist {}
+
 .artistLink {
-  color: #1e40af;
   text-decoration: none;
+
 }
 
 .artistLink:hover {
   text-decoration: underline;
 }
 
+
+.metaBlock {
+  margin-top: auto;
+}
+
 .meta {
-  color: #666;
   margin-bottom: 20px;
-  font-style: italic;
+}
+
+.lyricsContainer {
+  padding: 3rem 0rem;
 }
 
 .lyrics {
+  font-family: "Menbere", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
   white-space: pre-wrap;
   line-height: 1.6;
-  background: #fafafa;
   border-radius: 8px;
-  padding: 20px;
-  border: 1px solid #eee;
-  text-align: center;
+  text-align: left;
 }
 
 .notFound {

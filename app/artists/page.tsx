@@ -29,7 +29,7 @@ export default async function ArtistsPage() {
   )
 
   return (
-    <div className={styles.container}>
+    <div className={styles.artistContainer}>
       <h1 className={styles.title}>Artists</h1>
 
       <div className={styles.grid}>

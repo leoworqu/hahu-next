@@ -10,40 +10,44 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Dont forget to add a question mark before new model declarations you push to the database
 model Artist {
-  id String @id @default(cuid())
-  slug String @unique
-  name String
-  bio String
-  updatedAt DateTime  @default(now())
-  createdAt DateTime @default(now())
-  albums Albums[]
-  songs Songs[]
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  bio         String
+  artistImage String?  @default("/placeholder-image.png")
+  updatedAt   DateTime @default(now())
+  createdAt   DateTime @default(now())
+  albums      Albums[]
+  songs       Songs[]
 }
 
 model Albums {
-  id String @id @default(cuid())
-  slug String @unique
-  title String
-  year Int
-  albumArt String? @default("/placeholder-image.png")
-  artist Artist @relation(fields: [artistId], references: [id])
-  artistId String
-  updatedAt DateTime  @default(now())
+  id        String   @id @default(cuid())
+  slug      String   @unique
+  title     String
+  year      Int
+  albumArt  String?  @default("/placeholder-image.png")
+  artist    Artist   @relation(fields: [artistId], references: [id])
+  artistId  String
+  updatedAt DateTime @default(now())
   createdAt DateTime @default(now())
-  songs Songs[]
+  songs     Songs[]
 }
 
 model Songs {
-  id String @id @default(cuid())
-  slug String @unique
-  title String
-  artistId  String
-  artist Artist @relation(fields: [artistId], references: [id])
-  albumId String?
-  album Albums? @relation(fields: [albumId], references: [id])
-  lyrics String
-  coverArt String? @default("/placeholder-image.png")
-  updatedAt DateTime  @default(now())
-  createdAt DateTime @default(now())
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  artistId    String
+  trackNumber String?
+  single      Boolean? @default(false)
+  artist      Artist   @relation(fields: [artistId], references: [id])
+  albumId     String?
+  album       Albums?  @relation(fields: [albumId], references: [id])
+  lyrics      String
+  coverArt    String?  @default("/placeholder-image.png")
+  updatedAt   DateTime @default(now())
+  createdAt   DateTime @default(now())
 }

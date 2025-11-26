@@ -15,6 +15,7 @@ export async function generateStaticParams() {
   return artists.map(a => ({ artistSlug: a.slug }))
 }
 
+
 // SEO metadata per artist
 export async function generateMetadata({
   params,
@@ -27,14 +28,15 @@ export async function generateMetadata({
   })
 
   if (!artist) {
-    return { title: 'Artist not found • LyricZone' }
+    return { title: 'Artist not found • Hahu Lyrics' }
   }
 
   return {
-    title: `${artist.name} • LyricZone`,
+    title: `${artist.name} • Hahu Lyrics`,
     description: artist.bio ?? undefined,
   }
 }
+
 
 export default async function ArtistPage({
   params,
@@ -48,7 +50,7 @@ export default async function ArtistPage({
         orderBy: { year: 'asc' },
         include: {
           songs: {
-            orderBy: { title: 'asc' },
+            orderBy: { trackNumber: 'asc' },
           },
         },
       },
@@ -66,9 +68,11 @@ export default async function ArtistPage({
 
   const hasAlbums = artist.albums.length > 0
   const hasSingles = artist.songs.length > 0
+  const imageSrc = artist.artistImage ?? '/placeholder-image.png'
 
   return (
-    <div className={styles.container}>
+    <div className={styles.artContainer}>
+      <img src={imageSrc} alt="" className={styles.artistImg} />
       <h1 className={styles.name}>{artist.name}</h1>
       {artist.bio && <p className={styles.bio}>{artist.bio}</p>}
 
@@ -78,31 +82,21 @@ export default async function ArtistPage({
           <h2 className={styles.sub}>Albums</h2>
           <div className={styles.albumList}>
             {artist.albums.map((album: Album) => (
-              <section key={album.id} className={styles.album}>
-                <div className={styles.albumHeader}>
-                  <h3 className={styles.albumTitle}>{album.title}</h3>
-                  {album.year && (
-                    <span className={styles.albumYear}>{album.year}</span>
-                  )}
-                </div>
-
-                {album.songs.length ? (
-                  <ul className={styles.songList}>
-                    {album.songs.map((song: { id: string; title: string; slug: string }) => (
-                      <li key={song.id}>
-                        <Link
-                          href={`/songs/${song.slug}`}
-                          className={styles.songLink}
-                        >
-                          {song.title}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className={styles.empty}>No songs for this album yet.</p>
-                )}
-              </section>
+              <Link key={album.id} href={`/albums/${album.slug}`} className={styles.albumLink}>
+                <section className={styles.album}>
+                  <div className={styles.albumHeader}>
+                    {album.albumArt && (
+                      <img src={album.albumArt} alt="" className={styles.albumArt} />
+                    )}
+                    <div className={styles.albumMeta}>
+                      <h3 className={styles.albumTitle}>{album.title}</h3>
+                      {album.year && (
+                        <span className={styles.albumYear}>{album.year}</span>
+                      )}
+                    </div>
+                  </div>
+                </section>
+              </Link>
             ))}
           </div>
         </>

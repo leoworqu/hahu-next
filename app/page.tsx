@@ -4,7 +4,7 @@ import styles from './Home.module.css'
 import { prisma } from '@/lib/prisma'
 
 export const metadata = {
-  title: 'LyricZone — Find Your Favorite Lyrics',
+  title: 'Hahu Lyrics',
   description: 'Browse artists and songs to find your favorite lyrics easily.',
 }
 
@@ -49,7 +49,7 @@ export default async function HomePage() {
       artist: { select: { name: true, slug: true } },
       album: { select: { albumArt: true, title: true, slug: true } },
     },
-    orderBy: { createdAt: 'desc' }, // newest first
+    orderBy: { createdAt: 'desc' },
     take: 9,
   })
 
@@ -71,33 +71,35 @@ export default async function HomePage() {
   })) as Artist[]
 
   return (
-    <main className={styles.container}>
-      {/* HERO – unchanged */}
-      <div className={styles.hero}>
-        <div className={styles.heroHeaders}>
-          <h1 className={styles.title}>Universe of Lyrics.</h1>
-          <p className={styles.subtitle}>
-            Browse artists to find your favorite songs and lyrics
-          </p>
-        </div>
+    <main className={styles.homeContainer}>
+      <div className={styles.heroSearchDiv}>
+        <div className={styles.searchCon}>
+          <div className={styles.heroHeaders}>
+            <p className={styles.subtitle}>
+              Browse artists to find your favorite songs and lyrics
+            </p>
+          </div>
 
-        <div className={styles.heroSearch}>
-          <form className={styles.heroSearchContainer} action="#" method="get">
-            <input
-              className={styles.heroSearchInput}
-              type="text"
-              placeholder="Search..."
-              name="q"
-              required
-            />
-            <button className={styles.heroSearchButton} type="submit">
-              Search
-            </button>
-          </form>
+          <div className={styles.heroSearch}>
+            <form className={styles.heroSearchContainer} action="#" method="get">
+              <input
+                className={styles.heroSearchInput}
+                type="text"
+                placeholder="Search..."
+                name="q"
+                required
+              />
+              <button className={styles.heroSearchButton} type="submit">
+                Search
+              </button>
+            </form>
+          </div>
         </div>
       </div>
 
-      {/* 🎵 Featured Songs */}
+      {/* 🎵 Featured Songs
+
+      
       <section className={styles.artistsSection}>
         <h2 className={styles.sectionTitle}>Featured Songs</h2>
         <ul className={styles.artistList}>
@@ -128,9 +130,11 @@ export default async function HomePage() {
         </ul>
       </section>
 
+       */}
+
       {/* 💿 Featured Albums */}
       <section className={styles.artistsSection}>
-        <h2 className={styles.sectionTitle}>Featured Albums</h2>
+        <h2 className={styles.sectionTitle}>Newly Added</h2>
         <ul className={styles.albumGrid}>
           {typedFeaturedAlbums.map((album) => {
             const artUrl = album.albumArt ?? '/default-cover.png'

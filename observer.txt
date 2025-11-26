@@ -7,3 +7,21 @@ Maecenas ultrices enim justo, eu luctus sapien egestas a. Nam ultricies, risus e
 Donec id mauris placerat, sollicitudin eros nec, tempus elit. Ut sollicitudin velit faucibus risus mollis ullamcorper. Etiam vulputate justo in nisi dictum laoreet. Vivamus hendrerit commodo ligula ac sollicitudin. Nullam sem erat, viverra nec rhoncus at, vulputate consequat nisl. Morbi a urna tristique, egestas lacus quis, gravida urna. Aliquam vel convallis sem. Nullam mollis nisi quis dolor facilisis, eu rutrum diam scelerisque. Maecenas viverra quis neque sed lobortis. Etiam molestie eget ex a suscipit. Fusce rhoncus auctor urna, a congue felis dictum eget. Mauris rutrum, diam id tincidunt pulvinar, nisl ex maximus leo, nec pulvinar ligula dolor quis purus. Nullam sit amet fermentum metus.
 
 Aenean mattis erat urna, vitae ullamcorper eros lacinia vitae. Aliquam eget interdum est, in commodo risus. Integer in lacus et dolor eleifend sodales non pharetra lectus. Pellentesque varius quam vel metus condimentum, at luctus ipsum laoreet. Aenean consequat dolor nisl, placerat ultrices est ullamcorper non. In gravida urna quam, id tincidunt odio ultricies in. Phasellus et fringilla nisi. Pellentesque iaculis elit id massa pretium, at aliquet tellus ornare. Cras laoreet sapien nec semper tincidunt. Nunc sed nunc et elit ultricies aliquam. Nulla facilisi. Suspendisse viverra, tellus bibendum vestibulum feugiat, neque sem euismod elit, ac gravida sapien purus ac leo. Nulla eget pharetra lectus, eget malesuada metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+
+
+                {album.songs.length ? (
+                  <ul className={styles.songList}>
+                    {album.songs.map((song: { id: string; title: string; slug: string }) => (
+                      <li key={song.id}>
+                        <Link
+                          href={`/songs/${song.slug}`}
+                          className={styles.songLink}
+                        >
+                          {song.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className={styles.empty}>No songs for this album yet.</p>
+                )}

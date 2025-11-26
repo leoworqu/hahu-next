@@ -1,11 +1,9 @@
 /* app/Home.module.css */
 
-.container {
-  max-width: 1240px;
-  margin: auto;
-  padding: 3rem;
+.homeContainer {
+  max-width: 1080px;
+  margin: 6rem auto;
   padding-bottom: 60px;
-  background-color: white;
 }
 
 
@@ -17,48 +15,53 @@
 /* ------ Hero Styles ----- */
 
 
-.hero{
-  height: 500px;
+.heroSearchDiv {
+  height: 300px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0 3rem;
+
+  margin-bottom: 6rem;
 }
 
-.title {
-  font-size: 4rem;
-  max-width: 350px;
-  font-weight: bolder;
-  text-align: left;
-  margin-bottom: 8px;
-  line-height: 1;
+.searchCon {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin-top: 0rem;
+  height: 80px;
 }
+
 
 .subtitle {
-  text-align: left;
-  color: #555;
-  margin-bottom: 30px;
-  max-width: 350px;
+  text-align: right;
+  width: 100%;
+  font-size: 1.5rem;
+  font-weight: 900;
 }
 
-.heroHeaders{
+.heroHeaders {
   width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 1.5rem;
 }
 
-.heroSearch{
+.heroSearch {
   width: 50%;
+  padding-left: 1.5rem;
 }
 
-.heroSearchContainer{
+.heroSearchContainer {
+  height: 45px;
   display: flex;
   align-items: center;
-  border-radius: 0.5rem;
+  border-radius: 1.5rem;
   overflow: hidden;
   transition: all 0.3s ease;
-  border: 1px solid #eee;
+  border: 1px solid #777;
 }
 
-.heroSearchInput{
+.heroSearchInput {
   border: none;
   outline: none;
   padding: 10px 15px;
@@ -66,18 +69,20 @@
   flex: 1;
 }
 
-.heroSearchButton{
-  background-color: #1C0B19;
+.heroSearchButton {
+  border-radius: 1.5rem;
+  background-color: crimson;
+  height: 45px;
   color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 10px 30px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s;
+  transition: background-color 0.1s;
 }
 
-.heroSearchButton:hover{
-  background-color: #0056b3;
+.heroSearchButton:hover {
+  background-color: rgba(220, 20, 60, 0.506);
 }
 
 
@@ -180,9 +185,31 @@
   display: flex;
   flex-wrap: wrap;
   text-align: center;
+  gap: 2rem;
 }
-.albumCard { display: block; width: 33.3%; padding: 0.5rem; padding-left: 2rem; padding-right: 2rem;}
-.albumCover { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 10px; }
-.albumMeta h3 { font-size: 0.95rem; margin: 8px 0 2px; }
-.albumMeta p { color: #777; font-size: 0.8rem; }
-.trackList { margin-top: 16px; }
+
+.albumCard {
+  display: block;
+  width: calc((100% - 4rem) / 3);
+}
+
+.albumCover {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.albumMeta h3 {
+  font-size: 0.95rem;
+  margin: 8px 0 2px;
+}
+
+.albumMeta p {
+  color: #777;
+  font-size: 0.8rem;
+}
+
+.trackList {
+  margin-top: 16px;
+}
