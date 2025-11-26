@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           @import url('https://fonts.googleapis.com/css2?family=Menbere:wght@100..700&display=swap');
         </style>
       </head>
-      <body style={{ fontFamily: "'Menbere', sans-serif" }}>
+      <body style={{ fontFamily: "Menbere" }}>
         <Navbar />
         <main>{children}</main>
         <Footer />
