@@ -1,10 +1,11 @@
 import './globals.css'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import Script from 'next/script'
 
 export const metadata = {
   title: 'Hahu Lyrics',
-  description: 'Find lyrics by song or artist',
+  description: 'Find lyrics by song or artist, powered by Next.js',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
