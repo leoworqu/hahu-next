@@ -6,19 +6,17 @@ export default function Navbar() {
     <header className={styles.navbar}>
       <div className={styles.navContainer}>
         <Link href="/" className={styles.logo}>
-          HaHu
+          <img src="/hahu-lyrics-logo.png" alt="" className={styles.navIcon} />
         </Link>
 
         <nav>
-          <ul className={styles.links}>
-            <li><Link href="/artists">Artists</Link></li>
-          </ul>
-        </nav>
-
-        <nav>
-          <ul className={styles.links}>
-            <li><Link href="/search">Search</Link></li>
-          </ul>
+          <Link className={styles.linksIcon3} href="/artists">
+            <ul className={styles.links}>
+              <img src="/artist-black.png" alt="" className={styles.linksIcon} />
+              <img src="/artist-white.png" alt="" className={styles.linksIcon2} />
+              <li>Browse Artists</li>
+            </ul>
+          </Link>
         </nav>
       </div>
     </header>

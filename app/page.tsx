@@ -60,7 +60,7 @@ export default async function HomePage() {
       artist: { select: { name: true, slug: true } },
     },
     orderBy: { createdAt: 'desc' },
-    take: 9,
+    take: 12,
   })
 
   const typedFeaturedAlbums = featuredAlbums as FeaturedAlbum[]
@@ -76,16 +76,16 @@ export default async function HomePage() {
         <div className={styles.searchCon}>
           <div className={styles.heroHeaders}>
             <p className={styles.subtitle}>
-              Browse artists to find your favorite songs and lyrics
+              Ethiopia's Largest Lyric Database!
             </p>
           </div>
 
           <div className={styles.heroSearch}>
-            <form className={styles.heroSearchContainer} action="#" method="get">
+            <form className={styles.heroSearchContainer} action="/search" method="get">
               <input
                 className={styles.heroSearchInput}
                 type="text"
-                placeholder="Search..."
+                placeholder="Search songs, artists, albums..."
                 name="q"
                 required
               />
@@ -134,7 +134,7 @@ export default async function HomePage() {
 
       {/* 💿 Featured Albums */}
       <section className={styles.artistsSection}>
-        <h2 className={styles.sectionTitle}>Newly Added</h2>
+        <h2 className={styles.sectionTitle}>New Arivals</h2>
         <ul className={styles.albumGrid}>
           {typedFeaturedAlbums.map((album) => {
             const artUrl = album.albumArt ?? '/default-cover.png'

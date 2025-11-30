@@ -16,7 +16,7 @@
 
 
 .heroSearchDiv {
-  height: 300px;
+  height: 150px;
   display: flex;
   align-items: center;
 
@@ -29,26 +29,26 @@
   align-items: center;
   margin-top: 0rem;
   height: 80px;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 
 .subtitle {
-  text-align: right;
   width: 100%;
   font-size: 1.5rem;
   font-weight: 900;
+  text-align: center;
 }
 
 .heroHeaders {
   width: 50%;
   display: flex;
   justify-content: flex-end;
-  padding-right: 1.5rem;
 }
 
 .heroSearch {
   width: 50%;
-  padding-left: 1.5rem;
 }
 
 .heroSearchContainer {
@@ -71,7 +71,7 @@
 
 .heroSearchButton {
   border-radius: 1.5rem;
-  background-color: crimson;
+  background-color: #2B1B35;
   height: 45px;
   color: white;
   border: none;
@@ -82,7 +82,7 @@
 }
 
 .heroSearchButton:hover {
-  background-color: rgba(220, 20, 60, 0.506);
+  background-color: #533d61;
 }
 
 
@@ -190,7 +190,7 @@
 
 .albumCard {
   display: block;
-  width: calc((100% - 4rem) / 3);
+  width: calc((100% - 6rem) / 4);
 }
 
 .albumCover {

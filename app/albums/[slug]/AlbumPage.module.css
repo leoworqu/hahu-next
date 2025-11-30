@@ -1,5 +1,6 @@
 .albumPage {
-    max-width: 900px;
+    max-width: 1080px;
+    width: 100%;
     margin: 40px auto;
     padding: 0 16px 40px;
 }
@@ -100,12 +101,10 @@
 }
 
 .trackListItem:hover {
-    background-color: #608e7f;
+    background-color: #2B1B35;
     transform: translateY(-2px);
     padding: 1rem 2rem;
     color: white;
-    border-bottom: 3px solid #476a5f;
-    border-right: 3px solid #476a5f;
 
     .trackTitleLink {
         color: white;

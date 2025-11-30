@@ -25,3 +25,15 @@ Aenean mattis erat urna, vitae ullamcorper eros lacinia vitae. Aliquam eget inte
                 ) : (
                   <p className={styles.empty}>No songs for this album yet.</p>
                 )}
+
+
+
+                 {song.album && (
+                            <p className={styles.meta}>
+                                <strong>Album:</strong>{' '}
+                                <Link href={`/albums/${song.album.slug}`}>
+                                    {song.album.title}
+                                </Link>{' '}
+                                ({song.album.year})
+                            </p>
+                        )}

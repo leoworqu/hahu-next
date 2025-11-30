@@ -12,11 +12,6 @@
   width: 70%;
 }
 
-.rightContainer {
-  background-color: #608e7f;
-  width: 40%;
-}
-
 .header {
   display: flex;
   gap: 1.5rem;
@@ -33,17 +28,38 @@
   border-radius: 1rem;
 }
 
-.artist {}
+.artist {
+  display: flex;
+}
 
 .artistLink {
+  display: flex;
+  align-items: center;
   text-decoration: none;
-
+  border: 1.5px solid black;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 3rem;
+  font-size: 0.75rem;
+  color: black;
 }
 
 .artistLink:hover {
-  text-decoration: underline;
+  background-color: #2B1B35;
+  border: 1.5px solid #2B1B35;
+  color: white;
 }
 
+.artistLink:active {
+  background-color: #1e0e28;
+}
+
+.artistImage {
+  border-radius: 51%;
+  width: 25px;
+  height: 25px;
+  margin-right: 0.5rem;
+}
 
 .metaBlock {
   margin-top: auto;
@@ -70,4 +86,61 @@
 .notFound {
   padding: 40px;
   text-align: center;
+}
+
+
+
+
+.rightContainer {
+  width: 40%;
+}
+
+.albumSection {
+  margin-top: 2rem;
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+}
+
+.albumSectionHeading {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.albumTrackList {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+
+.albumTrackLink {
+  border-radius: 2rem;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  padding: 0.75rem 1.5rem;
+}
+
+.albumTrackLink:hover {
+  background-color: #2B1B35;
+  color: white;
+  padding-left: 2.4rem;
+
+  .albumTrackNumber {
+    color: white;
+  }
+}
+
+.albumTrackLink:active {
+  background-color: #2f5146;
+}
+
+.albumTrackNumber {
+  width: 24px;
+  color: #888;
+  margin-right: 0.5rem;
 }

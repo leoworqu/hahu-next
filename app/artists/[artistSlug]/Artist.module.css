@@ -28,6 +28,7 @@
 .albumLink {
   text-decoration: none;
   color: black;
+  margin: 5px;
 }
 
 .albumList {
@@ -38,16 +39,14 @@
 .album {
   border-radius: 1rem;
   overflow: hidden;
-  border: 1px solid #ccc;
-  transition: background 0.3s ease,
-    color 0.3s ease,
-    transform 0.3s ease;
+  border: 1px solid #2B1B35;
+  transition: background 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease;
 }
 
 .album:hover {
-  background-color: #608e7f;
-  border-bottom: 3px solid #476a5f;
-  border-right: 3px solid #476a5f;
+  background-color: #2B1B35;
   color: white;
 }
 

@@ -48,10 +48,24 @@ export default async function SongPage({
         where: { slug: params.songSlug },
         include: {
             artist: {
-                select: { name: true, slug: true },
+                select: { name: true, slug: true, artistImage: true },
             },
             album: {
-                select: { title: true, year: true, slug: true, albumArt: true },
+                select: {
+                    title: true,
+                    year: true,
+                    slug: true,
+                    albumArt: true,
+                    songs: {
+                        orderBy: { trackNumber: 'asc' },
+                        select: {
+                            id: true,
+                            title: true,
+                            slug: true,
+                            trackNumber: true,
+                        },
+                    },
+                },
             },
         },
     })
@@ -66,10 +80,19 @@ export default async function SongPage({
         song.coverArt ??
         '/placeholder-image.png'
 
+    const artistPictureUrl =
+        song.artist?.artistImage ??
+        song.coverArt ??
+        '/placeholder-image.png'
+
     // Handles lyrics using \n markers (or real line breaks as fallback)
     const lines = song.lyrics.includes('\\n')
         ? song.lyrics.split('\\n')
         : song.lyrics.split(/\r?\n/)
+
+    // Other tracks on the same album (excluding current song)
+    const otherTracks =
+        song.album?.songs.filter(track => track.id !== song.id) ?? []
 
     return (
         <div className={styles.pageContainer}>
@@ -87,27 +110,21 @@ export default async function SongPage({
                     </div>
 
                     <div className={styles.metaBlock}>
+                        <p style={{ fontSize: "1.5rem", fontWeight: "700" }}>{song.trackNumber}</p>
                         <h1 className={styles.title}>{song.title}</h1>
 
                         <p className={styles.artist}>
-                            By{' '}
                             <Link
                                 href={`/artists/${song.artist.slug}`}
                                 className={styles.artistLink}
                             >
+
+                                <img src={artistPictureUrl} alt="" className={styles.artistImage} />
                                 {song.artist.name}
                             </Link>
                         </p>
 
-                        {song.album && (
-                            <p className={styles.meta}>
-                                <strong>Album:</strong>{' '}
-                                <Link href={`/albums/${song.album.slug}`}>
-                                    {song.album.title}
-                                </Link>{' '}
-                                ({song.album.year})
-                            </p>
-                        )}
+
                     </div>
                 </header>
 
@@ -121,7 +138,30 @@ export default async function SongPage({
             </div>
 
             <div className={styles.rightContainer}>
+                {song.album && otherTracks.length > 0 && (
+                    <section className={styles.albumSection}>
+                        <h2 className={styles.albumSectionHeading}>
+                            More from this album
+                        </h2>
 
+                        <ol className={styles.albumTrackList}>
+                            {otherTracks.map(track => (
+                                <li key={track.id} className={styles.albumTrackItem}>
+
+                                    <Link
+                                        href={`/songs/${track.slug}`}
+                                        className={styles.albumTrackLink}
+                                    >
+                                        <span className={styles.albumTrackNumber}>
+                                            {track.trackNumber ?? '–'}
+                                        </span>
+                                        {track.title}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ol>
+                    </section>
+                )}
             </div>
         </div>
     )

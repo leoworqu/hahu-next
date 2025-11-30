@@ -1,0 +1,179 @@
+.searchPage {
+    max-width: 900px;
+    margin: 8rem auto;
+    padding: 0 16px 40px;
+    height: 100%;
+}
+
+.title {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    width: 50%;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 24px;
+}
+
+.section {
+    margin-top: 32px;
+}
+
+.sectionHeading {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+}
+
+.empty {
+    color: #888;
+    font-size: 0.95rem;
+}
+
+/* Songs */
+
+.songList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 10px;
+}
+
+.songItem {
+    border-radius: 10px;
+    border: 1px solid #eee;
+    overflow: hidden;
+}
+
+.songLink {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 8px 10px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.songThumb {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: #f2f2f2;
+}
+
+.songMeta {
+    display: flex;
+    flex-direction: column;
+}
+
+.songTitle {
+    font-weight: 600;
+}
+
+.songSub {
+    font-size: 0.85rem;
+    color: #777;
+}
+
+/* Artists / Albums simple lists */
+
+.simpleList,
+.albumList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 6px;
+}
+
+.simpleLink,
+.albumLink {
+    text-decoration: none;
+    color: inherit;
+}
+
+.simpleLink:hover,
+.songLink:hover,
+.albumLink:hover {
+    background: #fafafa;
+}
+
+
+
+
+.heroSearchDiv {
+    height: 150px;
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 6rem;
+}
+
+.searchCon {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-top: 0rem;
+    height: 80px;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+
+.subtitle {
+    text-align: right;
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+.heroHeaders {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1.5rem;
+}
+
+.heroSearch {
+    gap: 3rem;
+    display: flex;
+    width: 100%;
+    padding-left: 1.5rem;
+}
+
+.heroSearchContainer {
+    width: 50%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid #777;
+}
+
+.heroSearchInput {
+    border: none;
+    outline: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    flex: 1;
+}
+
+.heroSearchButton {
+    border-radius: 1.5rem;
+    background-color: #2B1B35;
+    height: 45px;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.1s;
+}
+
+.heroSearchButton:hover {
+    background-color: #533d61;
+}
